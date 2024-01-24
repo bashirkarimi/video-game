@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Navbar from "./components/Navbar";
+import Games from "./components/games";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
           aside dslfkj kljsda;fkj;dlsa fj;kldsjf ;lkj fds;lk jf;lkjsfks
         </div>
         <div className="border-2 w-full justify-between">
-          main
+          <Games />
         </div>
       </main>
       <footer className="container mx-auto w-full px-24 py-4">Footer</footer>
