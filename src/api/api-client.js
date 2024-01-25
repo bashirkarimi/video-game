@@ -26,4 +26,4 @@ const  getGames = async () => {
   return await handleApiRequest(url, options);
 }
 
-export {getGames };
+export { getGames };

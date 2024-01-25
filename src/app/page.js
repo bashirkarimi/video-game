@@ -11,7 +11,7 @@ export default function Home() {
         <div className=" border-2  flex-auto w-1/4 justify-between">
           aside dslfkj kljsda;fkj;dlsa fj;kldsjf ;lkj fds;lk jf;lkjsfks
         </div>
-        <div className="border-2 w-full justify-between">
+        <div className="w-full justify-between">
           <Games />
         </div>
       </main>
