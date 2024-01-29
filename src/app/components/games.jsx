@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { getGames } from '../../api/api-client';
+import { getData } from '../../api/api-client';
 import Platforms from './Platforms';
 
 const GameCardList = () => {
@@ -9,7 +9,7 @@ const GameCardList = () => {
 
   useEffect(() => {
     const fetchGames = async () => {
-      const data = await getGames();
+      const data = await getData('games');
       if (data) {
         setGames(data.results);
       }

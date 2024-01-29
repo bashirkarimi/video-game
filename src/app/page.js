@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import Games from "./components/Games";
+import Genres from "./components/Genres";
 
 export default function Home() {
   return (
@@ -8,8 +9,8 @@ export default function Home() {
         <Navbar />
       </nav>
       <main className="container flex mx-auto px-24">
-        <div className=" border-2  flex-auto w-1/4 justify-between">
-          aside dslfkj kljsda;fkj;dlsa fj;kldsjf ;lkj fds;lk jf;lkjsfks
+        <div className="flex-auto w-1/4 justify-between">
+          <Genres />
         </div>
         <div className="w-full justify-between">
           <Games />

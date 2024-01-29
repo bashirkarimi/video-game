@@ -1,4 +1,4 @@
-
+const apiUrl = 'https://api.rawg.io/api/';
 async function handleApiRequest(url, options = {}) {
   try {
     const response = await fetch(url, options);
@@ -13,9 +13,8 @@ async function handleApiRequest(url, options = {}) {
   }
 }
 
-
-const  getGames = async () => {
-  const url = `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`;
+const  getData = async (endPoint) => {
+  const url = `${apiUrl}${endPoint}?key=${process.env.RAWG_API_KEY}`;
   const options = {
     method: 'GET',
     mode: 'cors',
@@ -26,4 +25,4 @@ const  getGames = async () => {
   return await handleApiRequest(url, options);
 }
 
-export { getGames };
+export { getData };
