@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import Games from "./components/games";
+import Games from "./components/Games";
 
 export default function Home() {
   return (
