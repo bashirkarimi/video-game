@@ -13,8 +13,13 @@ async function handleApiRequest(url, options = {}) {
   }
 }
 
-const  getData = async (endPoint) => {
-  const url = `${apiUrl}${endPoint}?key=${process.env.RAWG_API_KEY}`;
+const  getData = async (endPoint, genre) => {
+  const params = new URLSearchParams();
+
+  params.append('key', process.env.RAWG_API_KEY);
+  genre && params.append('genres', genre);
+
+  const url = `${apiUrl}${endPoint}?${params.toString()}`;
   const options = {
     method: 'GET',
     mode: 'cors',

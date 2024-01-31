@@ -4,19 +4,21 @@ import Image from 'next/image';
 import { getData } from '../../api/api-client';
 import Platforms from './Platforms';
 
-const GameCardList = () => {
+const GameCardList = ({getGenre}) => {
   const [games, setGames] = useState([]);
+  const genre = getGenre;
 
   useEffect(() => {
     const fetchGames = async () => {
-      const data = await getData('games');
+      const data = await getData('games', genre);
       if (data) {
         setGames(data.results);
       }
     };
 
     fetchGames();
-  }, []);
+  }, [genre]);
+
 
   const resizedImageUrl = (imageUrl) => {
     const target = 'media/';
