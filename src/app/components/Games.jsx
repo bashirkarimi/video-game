@@ -33,12 +33,14 @@ const GameCardList = ({getGameQuery}) => {
       {games.map((game) => (
         <div key={game.id} className="bg-gray-200 rounded-md overflow-hidden">
           <div className="card-image overflow-hidden relative aspect-video">
-            <Image 
-              src={resizedImageUrl(game.background_image)} 
-              alt={game.name}
-              layout="fill"
-              sizes="25vw"
-            />
+            {game.background_image &&
+              <Image 
+                src={resizedImageUrl(game.background_image)} 
+                alt={game.name}
+                layout="fill"
+                sizes="25vw"
+              />
+            }
           </div>
           <div className="mx-2 my-3 flex flex-col justify-between">
             <h5 className="text-2xl">{game.name}</h5>
