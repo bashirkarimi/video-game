@@ -13,11 +13,12 @@ async function handleApiRequest(url, options = {}) {
   }
 }
 
-const  getData = async (endPoint, genre) => {
-  const params = new URLSearchParams();
-
-  params.append('key', process.env.RAWG_API_KEY);
-  genre && params.append('genres', genre);
+const getData = async (endPoint, selectedGenre, selectedPlatform) => {
+  const params = new URLSearchParams({
+    key: process.env.RAWG_API_KEY,
+    ...(selectedGenre && { genres: selectedGenre }),
+    ...(selectedPlatform && { parent_platforms: selectedPlatform }),
+  });
 
   const url = `${apiUrl}${endPoint}?${params.toString()}`;
   const options = {
@@ -27,7 +28,7 @@ const  getData = async (endPoint, genre) => {
       'Content-Type': 'application/json',
     },
   };
-  return await handleApiRequest(url, options);
-}
+  return handleApiRequest(url, options);
+};
 
 export { getData };

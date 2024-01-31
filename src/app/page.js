@@ -3,13 +3,19 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Games from "./components/Games";
 import Genres from "./components/Genres";
+import PlateformSelector from "./components/PlateformSelector";
 
 export default function Home() {
   const [genre, setGenre] = useState(null);
+  const [platform, setPlatform] = useState(null);
 
   const handleGenre = (slug) => {
     setGenre(slug);
   };
+
+  const handlePlateformChange = (id) => {
+    setPlatform(id);
+  }
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -21,7 +27,8 @@ export default function Home() {
           <Genres setGenre={handleGenre} />
         </div>
         <div className="w-full justify-between">
-          <Games getGenre={genre}/>
+          <PlateformSelector setPlatformChange={handlePlateformChange}/>
+          <Games getGenre={genre} getPlatform={platform}/>
         </div>
       </main>
       <footer className="container mx-auto w-full px-24 py-4">Footer</footer>
