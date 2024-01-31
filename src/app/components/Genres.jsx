@@ -19,9 +19,9 @@ const Genres = ({onSelectedGenre}) => {
     fetchGenres();
   }, []);
 
-  const handleGenre = (slug, id) => {
-    onSelectedGenre(slug);
-    setSelectedGenre(id);
+  const handleGenre = (genre) => {
+    onSelectedGenre(genre);
+    setSelectedGenre(genre);
   }
 
   return (
@@ -32,7 +32,7 @@ const Genres = ({onSelectedGenre}) => {
           <li key={index}>
             <button 
               className="flex pr-3 gap-3 items-center bg-gray-100 hover:bg-gray-300 hover:transition-colors rounded overflow-hidden"
-              onClick={() => handleGenre(genre.slug, genre.id)}
+              onClick={() => handleGenre(genre)}
             >
               <span className="block w-8 h-8">
                 <Image 
@@ -43,7 +43,7 @@ const Genres = ({onSelectedGenre}) => {
                   className="object-cover min-h-full"
                 />
               </span>
-              <span className={selectedGenre === genre.id ? 'font-semibold bg-gray-200' : ''}>{genre.name}</span>
+              <span className={selectedGenre?.id === genre.id ? 'font-semibold bg-gray-200' : ''}>{genre.name}</span>
             </button>
           </li>
         ))}

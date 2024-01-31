@@ -21,8 +21,8 @@ const getData = async (endPoint, getGameQuery) => {
 
   const params = new URLSearchParams({
     key: process.env.RAWG_API_KEY,
-    ...(genre && { genres: genre }),
-    ...(platform && { parent_platforms: platform }),
+    ...(genre && { genres: genre.slug }),
+    ...(platform && { parent_platforms: platform.id }),
     ...(order && { ordering: order }),
     ...(searchValue && { search: searchValue }),
   });

@@ -3,7 +3,6 @@ import { getData } from '../../api/api-client';
 
 const PlateformSelector = ({ onSelectedPlatform }) => {
   const [platforms, setPlatforms] = useState([]);
-  const [selectedPlatform, setSelectedPlatform] = useState(null);
 
   useEffect(() => {
       const fetchPlatforms = async () => {
@@ -16,9 +15,10 @@ const PlateformSelector = ({ onSelectedPlatform }) => {
       fetchPlatforms();
   }, []);
 
-  const handlePlatformSelector = (id) => {
-    setSelectedPlatform(id);
-    onSelectedPlatform(id);
+  const handlePlatformSelector = (platform ) => {
+    const platformObj = JSON.parse(platform);
+    
+    onSelectedPlatform(platformObj);
   }
 
   return (
@@ -29,7 +29,7 @@ const PlateformSelector = ({ onSelectedPlatform }) => {
       >
         <option value="">All Platforms</option>
         {platforms.map(platform => (
-          <option key={platform.id} value={platform.id}>{platform.name}</option>
+          <option key={platform.id} value={JSON.stringify({id: platform.id, name:platform.name})}>{platform.name}</option>
         ))}
       </select>
       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
