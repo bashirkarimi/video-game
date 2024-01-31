@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getData } from '../../api/api-client';
 
-const PlateformSelector = ({ setPlatformChange }) => {
+const PlateformSelector = ({ onSelectedPlatform }) => {
   const [platforms, setPlatforms] = useState([]);
   const [selectedPlatform, setSelectedPlatform] = useState(null);
 
@@ -18,7 +18,7 @@ const PlateformSelector = ({ setPlatformChange }) => {
 
   const handlePlatformSelector = (id) => {
     setSelectedPlatform(id);
-    setPlatformChange(id);
+    onSelectedPlatform(id);
   }
 
   return (

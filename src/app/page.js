@@ -6,16 +6,23 @@ import Genres from "./components/Genres";
 import PlateformSelector from "./components/PlateformSelector";
 
 export default function Home() {
-  const [genre, setGenre] = useState(null);
-  const [platform, setPlatform] = useState(null);
+  const [gameQuery, setGameQuery] = useState({});
 
-  const handleGenre = (slug) => {
-    setGenre(slug);
+  const handleGenre = (genre) => {
+    setGameQuery({
+      ...gameQuery, 
+      genre
+    });
   };
 
-  const handlePlateformChange = (id) => {
-    setPlatform(id);
+  const handlePlateformChange = (platform) => {
+    setGameQuery({
+      ...gameQuery, 
+      platform
+    });
   }
+
+  console.log('gameQuery', gameQuery);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -24,11 +31,11 @@ export default function Home() {
       </nav>
       <main className="container flex mx-auto px-24">
         <div className="flex-auto w-1/4 justify-between">
-          <Genres setGenre={handleGenre} />
+          <Genres onSelectedGenre={handleGenre} />
         </div>
         <div className="w-full justify-between">
-          <PlateformSelector setPlatformChange={handlePlateformChange}/>
-          <Games getGenre={genre} getPlatform={platform}/>
+          <PlateformSelector onSelectedPlatform={handlePlateformChange}/>
+          <Games getGameQuery={gameQuery}/>
         </div>
       </main>
       <footer className="container mx-auto w-full px-24 py-4">Footer</footer>

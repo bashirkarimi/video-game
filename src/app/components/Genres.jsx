@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { getData } from "../../api/api-client";
 
 
-const Genres = ({setGenre}) => {
+const Genres = ({onSelectedGenre}) => {
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(null);
 
@@ -20,7 +20,7 @@ const Genres = ({setGenre}) => {
   }, []);
 
   const handleGenre = (slug, id) => {
-    setGenre(slug);
+    onSelectedGenre(slug);
     setSelectedGenre(id);
   }
 
