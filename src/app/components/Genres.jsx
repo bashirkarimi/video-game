@@ -6,6 +6,7 @@ import { getData } from "../../api/api-client";
 
 const Genres = ({setGenre}) => {
   const [genres, setGenres] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState(null);
 
   useEffect(() => {
     const fetchGenres = async () => {
@@ -18,8 +19,9 @@ const Genres = ({setGenre}) => {
     fetchGenres();
   }, []);
 
-  const handleGenre = (slug) => {
+  const handleGenre = (slug, id) => {
     setGenre(slug);
+    setSelectedGenre(id);
   }
 
   return (
@@ -30,7 +32,7 @@ const Genres = ({setGenre}) => {
           <li key={index}>
             <button 
               className="flex pr-3 gap-3 items-center bg-gray-100 hover:bg-gray-300 hover:transition-colors rounded overflow-hidden"
-              onClick={() => handleGenre(genre.slug)}
+              onClick={() => handleGenre(genre.slug, genre.id)}
             >
               <span className="block w-8 h-8">
                 <Image 
@@ -41,7 +43,7 @@ const Genres = ({setGenre}) => {
                   className="object-cover min-h-full"
                 />
               </span>
-              {genre.name}  
+              <span className={selectedGenre === genre.id ? 'font-semibold bg-gray-200' : ''}>{genre.name}</span>
             </button>
           </li>
         ))}
