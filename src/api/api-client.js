@@ -16,11 +16,13 @@ async function handleApiRequest(url, options = {}) {
 const getData = async (endPoint, getGameQuery) => {
   const genre = getGameQuery?.genre;
   const platform = getGameQuery?.platform;
+  const order = getGameQuery?.order;
 
   const params = new URLSearchParams({
     key: process.env.RAWG_API_KEY,
     ...(genre && { genres: genre }),
     ...(platform && { parent_platforms: platform }),
+    ...(order && { ordering: order }),
   });
 
   const url = `${apiUrl}${endPoint}?${params.toString()}`;

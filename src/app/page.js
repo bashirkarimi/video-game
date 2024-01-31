@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Games from "./components/Games";
 import Genres from "./components/Genres";
 import PlateformSelector from "./components/PlateformSelector";
+import SortSelector from "./components/SortSelector";
 
 export default function Home() {
   const [gameQuery, setGameQuery] = useState({});
@@ -22,6 +23,13 @@ export default function Home() {
     });
   }
 
+  const handleOrderChange = (order) => {
+    setGameQuery({
+      ...gameQuery, 
+      order
+    });
+  }
+
   console.log('gameQuery', gameQuery);
 
   return (
@@ -34,7 +42,10 @@ export default function Home() {
           <Genres onSelectedGenre={handleGenre} />
         </div>
         <div className="w-full justify-between">
-          <PlateformSelector onSelectedPlatform={handlePlateformChange}/>
+          <div className="flex w-full justify-between">
+            <PlateformSelector onSelectedPlatform={handlePlateformChange}/>
+            <SortSelector onSelectedOrder={handleOrderChange}/>
+          </div>
           <Games getGameQuery={gameQuery}/>
         </div>
       </main>

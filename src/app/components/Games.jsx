@@ -21,7 +21,7 @@ const GameCardList = ({getGameQuery}) => {
 
   const resizedImageUrl = (imageUrl) => {
     const target = 'media/';
-    const position = imageUrl.lastIndexOf(target) + target.length;
+    const position = imageUrl?.lastIndexOf(target) + target.length;
     const text = 'resize/640/-/';
     if (imageUrl) {
       return imageUrl.slice(0, position) + text + imageUrl.slice(position);
