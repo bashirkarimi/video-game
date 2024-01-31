@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <nav className="container mx-auto w-full px-24 py-4">
-        <Navbar />
+        <Navbar onSearchValue={(searchValue) => { setGameQuery({...gameQuery, searchValue})}}/>
       </nav>
       <main className="container flex mx-auto px-24">
         <div className="flex-auto w-1/4 justify-between">
